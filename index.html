@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      width: 60px;
+      height: 30px;
+      border-radius: 5px;
+    }
+    .box1 {
+      background-color: rgb(145, 33, 117);
+    }
+    .box2 {
+      background-color: rgb(182, 100, 18);
+    }
+    .box3 {
+      background-color: rgb(246, 143, 208);
+    }
+    .box4 {
+      background-color: rgb(132, 159, 234);
+    }
+    #text {
+      color: aqua;
+      position: absolute;
+      top: 120px;
+      left: 117px;
+    }
+    .imgcontainer {
+      position: relative;
+    }
+    .contain {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .two {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .one {
+      display: flex;
+      flex-direction: column;
+    }
+    .box {
+      margin: 20px;
+      text-align: center;
+      color: aliceblue;
+      font-size: 8px;
+      font-weight: bold;
+      padding-top: 10px;
+      cursor: pointer;
+    }
+    .anim {
+      animation-iteration-count: infinite;
+      animation-name: example;
+      animation-duration: 8s;
+      font-family: Roboto;
+      margin-top: 30px;
+    }
+    @keyframes example {
+      0% {
+        color: rgb(166, 46, 144);
+      }
+      25% {
+        color: rgb(224, 127, 48);
+      }
+      50% {
+        color: rgb(244, 145, 229);
+      }
+      100% {
+        color: rgb(78, 113, 201);
+      }
+    }
+    .btns {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .sub {
+      margin-top: 40px;
+    }
+    .strt,
+    .stp {
+      border: none;
+      background-color: antiquewhite;
+      border-radius: 10px;
+      margin-left: 20px;
+      padding: 10px;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 767px) {
+      .contain {
+        display: block;
+      }
+      #image {
+        margin-left: 40px;
+      }
+      .head {
+        display: none;
+      }
+      .upper {
+        text-align: center;
+      }
+    }
+    @media screen and (min-width: 767px) {
+      .upper {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      .box {
+        font-size: 5px;
+        margin: 8px;
+      }
+      #image {
+        margin-left: -10px;
+      }
+      .upper {
+        font-size: 17px;
+        text-align: center;
+      }
+    }
+  </style>
+  <body>
+    <h1 class="anim upper">FITNESS SMART BAND</h1>
+    <div class="contain">
+      <div class="one">
+        <div class="imgcontainer">
+          <img
+            src="./blackwatch.png"
+            alt=""
+            width="300px"
+            height="300px"
+            id="image"
+          />
+          <p id="text"></p>
+        </div>
+        <div class="btns">
+          <button onclick="start()" class="strt">Start</button>
+          <button onclick="stop()" class="stp">Stop</button>
+        </div>
+      </div>
+      <div class="sub">
+        <h1 class="anim head">FITNESS SMART BAND</h1>
+        <p>Designs available in all colours</p>
+        <div class="two">
+          <div class="box box1" onclick="changesrc('p')">Purple</div>
+          <div class="box box2" onclick="changesrc('o')">Orange</div>
+          <div class="box box3" onclick="changesrc('pk')">Pink</div>
+          <div class="box box4" onclick="changesrc('b')">Blue</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var v;
+      function start() {
+        v = setInterval(() => {
+          var a = new Date();
+          var t = a.getHours() + ":" + a.getMinutes() + ":" + a.getSeconds();
+          document.getElementById("text").innerHTML = t;
+        }, 1000);
+      }
+      function stop() {
+        clearInterval(v);
+      }
+      function changesrc(event) {
+        if (event == "p") {
+          document.getElementById("image").src = "./purplewatch.png";
+        } else if (event == "o") {
+          document.getElementById("image").src = "./redwatch.png";
+        } else if (event == "pk") {
+          document.getElementById("image").src = "./pinkwatch.png";
+        } else if (event == "b") {
+          document.getElementById("image").src = "./bluewatch.png";
+        }
+      }
+    </script>
+  </body>
+</html>
